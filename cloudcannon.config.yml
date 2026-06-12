@@ -276,14 +276,16 @@ _editables:
   # Inline rich text. Drives on-page `data-editable="text"` regions AND the
   # sidebar `type: html` inputs that mirror them (via the *inline_richtext
   # anchor below) so both toolbars expose the same options.
-  # On-page editors already load the site's real Tailwind CSS, so they don't
-  # need an editor stylesheet. The sidebar rich-text INPUTS do (via the anchors
-  # defined at their first use, which add `options.styles`).
+  # `styles` is required here too: beyond rendering, it populates the Styles
+  # dropdown (selectors in `element.class` form, e.g. `span.accent`) and lets
+  # the on-page editor recognise existing styled spans instead of flagging them
+  # as uneditable elements — matching the sidebar inputs.
   text:
     bold: true
     italic: true
     link: true
     removeformat: true
+    styles: .cloudcannon/styles/editor.css
   # Block rich text. Drives on-page `data-editable="text" data-type="block"`
   # regions and their mirror inputs (the `content` field) via *block_richtext.
   block:
@@ -295,6 +297,7 @@ _editables:
     blockquote: true
     format: p h2 h3 h4
     removeformat: true
+    styles: .cloudcannon/styles/editor.css
   # Markdown body (`@content`) editor for legal/blog bodies — full toolbar.
   content:
     bold: true

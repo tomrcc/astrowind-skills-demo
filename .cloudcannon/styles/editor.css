@@ -16,6 +16,20 @@
  * the live site via Tailwind.
  */
 
+/* ---------------------------------------------------------------------------
+ * Toolbar styles. Only selectors in `element.class` form are surfaced in the
+ * rich-text Styles dropdown (the bare `.class` selectors further down render
+ * content but never appear as a toolbar option). These mirror the live-site
+ * definitions in src/assets/styles/tailwind.css so the editor preview matches
+ * production. The dropdown label is derived from the class name.
+ * ------------------------------------------------------------------------- */
+span.accent {
+  color: rgb(109 40 217);
+}
+span.emphasis {
+  font-weight: 600;
+}
+
 /* Emphasis / weight */
 .font-bold {
   font-weight: 700;

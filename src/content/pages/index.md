@@ -6,8 +6,8 @@ metadata:
 content_blocks:
   - _type: hero
     tagline: ''
-    title: 'Free template for <span class="hidden xl:inline">creating websites with</span> <span class="text-accent dark:text-white"> Astro v6</span> + Tailwind CSS'
-    subtitle: '<span class="hidden sm:inline"><span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro v6 + Tailwind CSS v4.</span> <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.'
+    title: 'Free template for creating websites with <span class="accent">Astro v6</span> + Tailwind CSS'
+    subtitle: '<span class="emphasis">AstroWind</span> is a free, customizable and production-ready template for Astro v6 + Tailwind CSS v4. Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.'
     content: ''
     image:
       src: '~/assets/images/hero-image.png'

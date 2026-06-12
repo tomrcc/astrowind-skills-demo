@@ -115,3 +115,20 @@
 .dd *:first-child {
   margin-top: 0;
 }
+
+/* ---------------------------------------------------------------------------
+ * Inline rich-text emphasis styles. Editors apply/remove these via the
+ * CloudCannon rich-text Styles dropdown; the editor preview mirrors them in
+ * .cloudcannon/styles/editor.css. Authored as literal CSS (not @utility) so
+ * they are always emitted — content fields reference them through `set:html`,
+ * which Tailwind's content scanner never sees.
+ * ------------------------------------------------------------------------- */
+.accent {
+  color: var(--color-accent);
+}
+:where(.dark, .dark *) .accent {
+  color: #fff;
+}
+.emphasis {
+  font-weight: 600;
+}
