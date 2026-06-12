@@ -20,7 +20,7 @@ content_blocks:
     title: Explore our diverse templates
     subtitle: 'Discover our selection below to streamline and elevate your projects.'
     tagline: ''
-    columns: 3
+    columns: '3'
     items:
       - title: Educational
         description: 'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.'
@@ -55,7 +55,7 @@ content_blocks:
     tagline: ''
     title: 'Main Features'
     content: ''
-    columns: 2
+    columns: '2'
     image:
       src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
       alt: 'Features Image'
@@ -78,7 +78,7 @@ content_blocks:
     tagline: ''
     title: 'Benefits'
     content: ''
-    columns: 2
+    columns: '2'
     image:
       src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
       alt: 'Benefits Image'

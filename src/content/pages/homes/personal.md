@@ -25,7 +25,7 @@ content_blocks:
     tagline: ''
     isReversed: false
     isAfterContent: false
-    columns: 3
+    columns: '3'
     content: >-
       <p>Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each pixel becomes a brushstroke in the canvas of imagination.</p> <br /> <p>I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate details of typography, or the vibrant hues of nature during my outdoor escapades.</p> <br /> <p>If you're curious to dive deeper into my work, you can follow me:</p>
     image:
@@ -89,7 +89,7 @@ content_blocks:
     title: Skills
     subtitle: 'Discover the proficiencies that allow me to bring imagination to life through design.'
     tagline: ''
-    columns: 3
+    columns: '3'
     isBeforeContent: false
     isAfterContent: false
     image:
@@ -130,7 +130,7 @@ content_blocks:
     tagline: ''
     isReversed: true
     isAfterContent: false
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">Project 1: <br /><span class="content-heading-secondary">Brand identity for tech innovators</span></h3>
     image:
@@ -155,7 +155,7 @@ content_blocks:
     tagline: ''
     isReversed: true
     isAfterContent: true
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">Project 2: <br /><span class="content-heading-secondary">Event poster for art & music festival</span></h3>
     image:
@@ -180,7 +180,7 @@ content_blocks:
     tagline: ''
     isReversed: true
     isAfterContent: true
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">Project 3: <br /><span class="content-heading-secondary">E-commerce website redesign for fashion brand</span></h3>
     image:

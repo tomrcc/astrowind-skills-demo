@@ -32,7 +32,7 @@ content_blocks:
     title: Our templates
     subtitle: 'Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod.'
     tagline: ''
-    columns: 3
+    columns: '3'
     isBeforeContent: true
     isAfterContent: false
     image:
@@ -52,7 +52,7 @@ content_blocks:
     title: ''
     subtitle: ''
     tagline: ''
-    columns: 3
+    columns: '3'
     isBeforeContent: false
     isAfterContent: true
     image:
@@ -123,7 +123,7 @@ content_blocks:
     title: Our locations
     subtitle: ''
     tagline: Find us
-    columns: 4
+    columns: '4'
     items:
       - title: EE.UU
         description: '1234 Lorem Ipsum St, 12345, Miami'
@@ -141,7 +141,7 @@ content_blocks:
     title: Technical Support
     subtitle: ''
     tagline: Contact us
-    columns: 2
+    columns: '2'
     items:
       - title: Chat with us
         description: 'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.'

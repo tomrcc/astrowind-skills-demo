@@ -80,7 +80,7 @@ content_blocks:
     title: Price-related features
     subtitle: Discover the advantages of choosing our plans
     tagline: ''
-    columns: 2
+    columns: '2'
     isBeforeContent: false
     isAfterContent: false
     image:
@@ -139,7 +139,7 @@ content_blocks:
     title: Pricing FAQs
     subtitle: "Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
     tagline: ''
-    columns: 1
+    columns: '1'
     items:
       - title: Do the plans come with customer support?
         description: 'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.'

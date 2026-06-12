@@ -32,7 +32,7 @@ content_blocks:
     tagline: Features
     title: What you get with AstroWind
     subtitle: 'One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023, 2024 and 2025.'
-    columns: 2
+    columns: '2'
     items:
       - title: 'Astro + Tailwind CSS Integration'
         description: 'A seamless integration between two great frameworks that offer high productivity, performance and versatility. Now powered by Tailwind CSS v4.'
@@ -61,7 +61,7 @@ content_blocks:
     image:
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
       alt: 'Colorful Image'
-    columns: 2
+    columns: '2'
     items:
       - title: 'Built on top of Astro v6'
         description: 'Benefiting from the performance and developer-friendly features of this modern static site generator.'
@@ -81,7 +81,7 @@ content_blocks:
     image:
       src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80'
       alt: 'Blueprint Image'
-    columns: 2
+    columns: '2'
     items:
       - title: 'High level of customization'
         description: "Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time."
@@ -104,7 +104,7 @@ content_blocks:
     image:
       src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
       alt: 'Astronauts Image'
-    columns: 2
+    columns: '2'
     items:
       - title: 'Enhanced user engagement'
         description: 'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.'
@@ -142,7 +142,7 @@ content_blocks:
     title: Most used widgets
     subtitle: 'Provides frequently used components for building websites using Tailwind CSS v4'
     tagline: Components
-    columns: 3
+    columns: '3'
     items:
       - title: Headers
         description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction."
@@ -178,7 +178,7 @@ content_blocks:
     title: Frequently Asked Questions
     subtitle: 'Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey.'
     tagline: FAQs
-    columns: 2
+    columns: '2'
     items:
       - title: 'Why AstroWind?'
         description: "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels."

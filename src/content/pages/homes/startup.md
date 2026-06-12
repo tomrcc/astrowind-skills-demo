@@ -27,7 +27,7 @@ content_blocks:
     title: About us
     subtitle: 'We believe in the magic of turning dreams into stunning realities. Founded by passionate developers with a shared vision, we set out to simplify the website creation process. Our templates bring together the innovation of Astro v6 and the versatility of Tailwind CSS v4, enabling you to express your unique brand identity like never before.'
     tagline: ''
-    columns: 3
+    columns: '3'
     items: []
   - _type: stats
     title: Discover the impressive impact of Astrowind
@@ -74,7 +74,7 @@ content_blocks:
     title: What services do we provide?
     subtitle: 'We offer a wide range of website templates that suit various industries and purposes such as business, portfolio, e-commerce, blog, etc.'
     tagline: ''
-    columns: 3
+    columns: '3'
     items:
       - title: Installation Instructions
         description: 'Offer clear instructions on how to download the purchased templates and install them on various website platforms or content management systems.'
@@ -90,7 +90,7 @@ content_blocks:
     title: Main features of our templates
     subtitle: 'Possess several key characteristics to effectively cater to the needs of startups and entrepreneurs.'
     tagline: ''
-    columns: 3
+    columns: '3'
     items:
       - title: Modern and Professional Design
         description: 'Have a contemporary design that reflects current design trends and gives a professional impression.'
@@ -114,7 +114,7 @@ content_blocks:
     title: Frequently Asked Questions
     subtitle: ''
     tagline: ''
-    columns: 2
+    columns: '2'
     items:
       - title: What are landing page templates?
         description: 'Landing page templates are pre-designed web page layouts that are specifically created to serve as a foundation for building effective landing pages. These templates are designed to capture the attention of visitors and guide them towards a specific action or goal, such as signing up for a newsletter, making a purchase, or downloading a resource.'
@@ -138,7 +138,7 @@ content_blocks:
     title: Let us know how we can help
     subtitle: 'We’re here to help and answer any question you might have.'
     tagline: ''
-    columns: 4
+    columns: '4'
     isBeforeContent: false
     isAfterContent: false
     image:

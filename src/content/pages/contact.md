@@ -48,7 +48,7 @@ content_blocks:
     title: We are here to help!
     subtitle: ''
     tagline: ''
-    columns: 3
+    columns: '3'
     items:
       - title: General support
         description: "Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality."

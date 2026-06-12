@@ -28,7 +28,7 @@ content_blocks:
     title: How to use our app?
     subtitle: 'Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Explore our templates now and experience the difference.'
     tagline: Step-by-step guide
-    columns: 2
+    columns: '2'
     isBeforeContent: false
     isAfterContent: false
     image:
@@ -53,7 +53,7 @@ content_blocks:
     title: 'Main Features'
     subtitle: ''
     tagline: ''
-    columns: 2
+    columns: '2'
     content: ''
     image:
       src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80'
@@ -77,7 +77,7 @@ content_blocks:
     title: 'Other features'
     subtitle: ''
     tagline: ''
-    columns: 2
+    columns: '2'
     content: ''
     image:
       src: 'https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
@@ -145,7 +145,7 @@ content_blocks:
     title: Still have some doubts?
     subtitle: ''
     tagline: ''
-    columns: 2
+    columns: '2'
     items:
       - title: What does this app do?
         description: 'This app provides a platform for you to easily browse, purchase, download, and use a wide range of website templates for your projects.'

@@ -28,7 +28,7 @@ content_blocks:
     title: Why choose AstroWind?
     subtitle: "Each of the following features enhances AstroWind's value proposition."
     tagline: ''
-    columns: 2
+    columns: '2'
     items:
       - title: 'Integration of Astro v6 and Tailwind CSS v4'
         description: 'Offers a powerful combination that enhances both the development process and the end-user experience. Also, allows to build dynamic and visually stunning websites with optimized performance.'
@@ -54,7 +54,7 @@ content_blocks:
     tagline: ''
     isReversed: true
     isAfterContent: false
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">Startup success stories: <br /><span class="content-heading-secondary">Launching with AstroWind</span></h3>
     image:
@@ -73,7 +73,7 @@ content_blocks:
     tagline: ''
     isReversed: false
     isAfterContent: true
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">SaaS showcase: <br /><span class="content-heading-secondary">Streamlining user experience</span></h3>
     image:
@@ -92,7 +92,7 @@ content_blocks:
     tagline: ''
     isReversed: true
     isAfterContent: true
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">Creative portfolios: <br /><span class="content-heading-secondary">Highlighting your work</span></h3>
     image:
@@ -111,7 +111,7 @@ content_blocks:
     tagline: ''
     isReversed: false
     isAfterContent: false
-    columns: 2
+    columns: '2'
     content: >-
       <h3 class="content-heading">Small business growth: <br /><span class="content-heading-secondary">Converting visitors into customers</span></h3>
     image:
@@ -172,7 +172,7 @@ content_blocks:
     title: Frequently Asked Questions
     subtitle: ''
     tagline: ''
-    columns: 2
+    columns: '2'
     items:
       - title: 'Is AstroWind compatible with the latest versions of Astro and Tailwind CSS?'
         description: 'Yes, AstroWind is designed to be compatible with the latest versions of both Astro and Tailwind CSS v4. This ensures that you can harness the full capabilities of these technologies while benefiting from the features offered by AstroWind.'

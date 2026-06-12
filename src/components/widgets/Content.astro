@@ -25,11 +25,11 @@ const {
 } = Astro.props;
 
 const columnsClass =
-  columns === 4
+  Number(columns) ===4
     ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
-    : columns === 3
+    : Number(columns) ===3
       ? 'lg:grid-cols-3 sm:grid-cols-2'
-      : columns === 2
+      : Number(columns) ===2
         ? 'sm:grid-cols-2'
         : '';
 ---

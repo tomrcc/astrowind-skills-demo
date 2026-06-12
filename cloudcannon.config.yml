@@ -33,6 +33,18 @@ _select_data:
     - email
     - tel
     - number
+  # Grid column counts for widgets (Content/Features/FAQs). Stored as strings
+  # because select inputs serialise the chosen value as a string; the widgets
+  # coerce with Number() before building the grid class.
+  column_counts:
+    - id: '1'
+      name: 1 column
+    - id: '2'
+      name: 2 columns
+    - id: '3'
+      name: 3 columns
+    - id: '4'
+      name: 4 columns
   # Icon names are a pre-determined set (the iconify sets enabled in
   # astro.config.ts: tabler:* and flat-color-icons:*). Editors pick from this
   # curated list of icons used across the site rather than typing a raw string.
@@ -268,6 +280,27 @@ _inputs:
     options:
       structures: _structures.content_blocks
     comment: Add, reorder and remove the sections that make up this page.
+  # Global button-field configs. These cascade by key name into nested
+  # button/callToAction objects (e.g. the hero_text CTAs) that are declared as
+  # bare `type: object` and would otherwise fall back to plain text inputs.
+  # Structure-level overrides (e.g. _structures.actions) still take precedence.
+  icon:
+    type: select
+    options:
+      allow_create: true
+      value_key: id
+      preview:
+        text:
+          - key: name
+      values: _select_data.icons
+  variant:
+    type: select
+    options:
+      values: _select_data.button_variants
+  target:
+    type: select
+    options:
+      values: _select_data.link_targets
 
 # ---------------------------------------------------------------------------
 # Editor toolbars
@@ -826,7 +859,7 @@ _structures:
           tagline: ''
           title: ''
           subtitle: ''
-          columns: 2
+          columns: '2'
           items: []
         _inputs: &features_inputs
           id:
@@ -841,8 +874,14 @@ _structures:
             type: html
             options: *inline_richtext
           columns:
-            type: number
+            type: select
             comment: Grid columns (1-4)
+            options:
+              values: _select_data.column_counts
+              value_key: id
+              preview:
+                text:
+                  - key: name
           items:
             type: array
             options:
@@ -867,7 +906,7 @@ _structures:
           tagline: ''
           title: ''
           subtitle: ''
-          columns: 3
+          columns: '3'
           items: []
         _inputs: *features_inputs
 
@@ -892,7 +931,7 @@ _structures:
           tagline: ''
           title: ''
           subtitle: ''
-          columns: 3
+          columns: '3'
           isBeforeContent: false
           isAfterContent: false
           image:
@@ -912,8 +951,14 @@ _structures:
             type: html
             options: *inline_richtext
           columns:
-            type: number
+            type: select
             comment: Grid columns (1-4)
+            options:
+              values: _select_data.column_counts
+              value_key: id
+              preview:
+                text:
+                  - key: name
           isBeforeContent:
             type: switch
             comment: Tighten spacing below (pairs with a following section)
@@ -958,7 +1003,7 @@ _structures:
           title: ''
           subtitle: ''
           content: ''
-          columns: 2
+          columns: '2'
           isReversed: false
           isAfterContent: false
           image:
@@ -987,7 +1032,14 @@ _structures:
             type: html
             options: *block_richtext
           columns:
-            type: number
+            type: select
+            comment: Grid columns (1-4)
+            options:
+              values: _select_data.column_counts
+              value_key: id
+              preview:
+                text:
+                  - key: name
           isReversed:
             type: switch
             comment: Place the image on the opposite side
@@ -1215,7 +1267,7 @@ _structures:
           tagline: ''
           title: ''
           subtitle: ''
-          columns: 2
+          columns: '2'
           items: []
         _inputs: *features_inputs
 
@@ -1599,7 +1651,10 @@ collections_config:
       image:
         type: image
       category:
-        type: text
+        type: select
+        options:
+          values: data.categories
+        comment: Pick from the managed category list (edit it in Site data → categories.json)
       tags:
         type: multiselect
         options:
@@ -1634,6 +1689,10 @@ data_config:
   # blog posts so editors pick from a managed list instead of free-typing.
   tags:
     path: src/data/tags.json
+  # Editable list of blog categories (same pattern as tags). Powers the
+  # `category` select on blog posts.
+  categories:
+    path: src/data/categories.json
 
 # ===========================================================================
 # Sidebar grouping

@@ -176,7 +176,7 @@ export interface Collapse {
   iconUp?: string;
   iconDown?: string;
   items?: Array<Item>;
-  columns?: number;
+  columns?: number | string;
   classes?: Record<string, string>;
 }
 
@@ -220,7 +220,7 @@ export interface Brands extends Omit<Headline, 'classes'>, Widget {
 export interface Features extends Omit<Headline, 'classes'>, Widget {
   image?: string | unknown;
   items?: Array<Item>;
-  columns?: number;
+  columns?: number | string;
   defaultIcon?: string;
   isBeforeContent?: boolean;
   isAfterContent?: boolean;
@@ -228,7 +228,7 @@ export interface Features extends Omit<Headline, 'classes'>, Widget {
 
 export interface Faqs extends Omit<Headline, 'classes'>, Widget {
   items?: Array<Item>;
-  columns?: number;
+  columns?: number | string;
 }
 
 export interface Steps extends Omit<Headline, 'classes'>, Widget {
@@ -242,7 +242,7 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   content?: string;
   image?: string | unknown;
   items?: Array<Item>;
-  columns?: number;
+  columns?: number | string;
   isReversed?: boolean;
   isAfterContent?: boolean;
   callToAction?: CallToAction;
