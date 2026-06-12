@@ -197,6 +197,24 @@ The interactive checks (click a row → outlines the row; click a field → outl
 field; sidebar edit re-renders the block; data-file nav edits re-render Header/Footer)
 require loading the site in CloudCannon's Visual Editor. Recommend a smoke pass there.
 
+## Editor smoke-test fixes (found loading the homepage in the Visual Editor)
+
+- **Empty buttons on re-render** — `Button.astro` used `text = Astro.slots.render('default')`
+  **without `await`**. SSR auto-awaits the promise so the build was fine, but the
+  client re-render shim rendered the unresolved promise as empty (affected slot-based
+  buttons like BlogLatestPosts' "View all posts", the contact form submit, blog
+  pagination). Fixed by awaiting the slot render.
+- **`Failed to render component: header — Invalid URL`** — `Header.astro` computed
+  `new URL(Astro.url)` for the active-link class; `Astro.url` isn't a valid absolute URL
+  during client-side re-render, so it threw. Wrapped in try/catch with a `''` fallback
+  (the active-link highlight is non-essential in the editor).
+- **Icon inputs → selects** — every `icon` input across the block structures
+  (`actions`, `items`, `stats`, `price_items`) changed from `type: text` to
+  `type: select` backed by a new `_select_data.icons` list (the curated set of
+  tabler/flat-color icons used on the site). Style fields with a fixed value set belong
+  in selects. (Navigation `socialLinks` icons live in the data file and could get the
+  same treatment via `file_config` if desired.)
+
 ## Out of scope / follow-ups
 
 - **Blog visual editing** (post bodies + list/detail) — deferred by scope decision.

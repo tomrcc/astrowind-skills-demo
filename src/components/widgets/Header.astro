@@ -50,7 +50,15 @@ const {
   editable = true,
 } = Astro.props;
 
-const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+// Astro.url is not a valid absolute URL when the component is re-rendered
+// client-side in CloudCannon's Visual Editor, so `new URL()` throws there.
+// The active-link highlight is non-essential in the editor — fall back to ''.
+let currentPath = '';
+try {
+  currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+} catch {
+  currentPath = '';
+}
 
 // Conditional editable-region attribute spreads (see `editable` prop above).
 const arrAttrs = (prop: string) => (editable ? { 'data-editable': 'array', 'data-prop': prop } : {});

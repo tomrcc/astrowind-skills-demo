@@ -33,6 +33,97 @@ _select_data:
     - email
     - tel
     - number
+  # Icon names are a pre-determined set (the iconify sets enabled in
+  # astro.config.ts: tabler:* and flat-color-icons:*). Editors pick from this
+  # curated list of icons used across the site rather than typing a raw string.
+  icons:
+    - tabler:accessible
+    - tabler:adjustments-horizontal
+    - tabler:arrow-big-up-lines
+    - tabler:arrows-right-left
+    - tabler:artboard
+    - tabler:article
+    - tabler:award
+    - tabler:brand-apple
+    - tabler:brand-behance
+    - tabler:brand-dribbble
+    - tabler:brand-google-play
+    - tabler:brand-pinterest
+    - tabler:brand-tailwind
+    - tabler:brand-twitter
+    - tabler:briefcase
+    - tabler:building-store
+    - tabler:bulb
+    - tabler:carousel-horizontal
+    - tabler:check
+    - tabler:chevron-right
+    - tabler:chevrons-right
+    - tabler:chevrons-up
+    - tabler:clock
+    - tabler:coin
+    - tabler:components
+    - tabler:download
+    - tabler:eyeglass
+    - tabler:file-download
+    - tabler:flip-vertical
+    - tabler:globe
+    - tabler:headset
+    - tabler:heart
+    - tabler:home-star
+    - tabler:info-square
+    - tabler:layers-union
+    - tabler:letter-case
+    - tabler:list-check
+    - tabler:mail
+    - tabler:map-pin
+    - tabler:message-circle
+    - tabler:message-star
+    - tabler:messages
+    - tabler:number-1
+    - tabler:number-2
+    - tabler:number-3
+    - tabler:number-4
+    - tabler:number-5
+    - tabler:number-6
+    - tabler:number-7
+    - tabler:package
+    - tabler:paint
+    - tabler:phone
+    - tabler:photo
+    - tabler:picture-in-picture
+    - tabler:plug-connected
+    - tabler:podium
+    - tabler:point-filled
+    - tabler:presentation
+    - tabler:refresh
+    - tabler:rocket
+    - tabler:school
+    - tabler:settings
+    - tabler:shield-lock
+    - tabler:shopping-cart
+    - tabler:square-number-1
+    - tabler:square-number-2
+    - tabler:square-number-3
+    - tabler:square-number-4
+    - tabler:square-rounded-arrow-right
+    - tabler:stairs
+    - tabler:template
+    - tabler:tie
+    - tabler:user-star
+    - tabler:users
+    - tabler:vaccine
+    - tabler:wand
+    - tabler:wifi-off
+    - tabler:writing
+    - flat-color-icons:advertising
+    - flat-color-icons:approval
+    - flat-color-icons:business-contact
+    - flat-color-icons:currency-exchange
+    - flat-color-icons:database
+    - flat-color-icons:document
+    - flat-color-icons:gallery
+    - flat-color-icons:template
+    - flat-color-icons:voice-presentation
 
 # ---------------------------------------------------------------------------
 # Page-builder block list. Shared by pages / homes / landing collections.
@@ -100,8 +191,9 @@ _structures:
             options:
               values: _select_data.button_variants
           icon:
-            type: text
-            comment: 'Icon name, e.g. tabler:download'
+            type: select
+            options:
+              values: _select_data.icons
           target:
             type: select
             options:
@@ -132,8 +224,9 @@ _structures:
           description:
             type: html
           icon:
-            type: text
-            comment: 'Icon name, e.g. tabler:rocket (optional)'
+            type: select
+            options:
+              values: _select_data.icons
 
   stats:
     values:
@@ -161,8 +254,9 @@ _structures:
           title:
             type: text
           icon:
-            type: text
-            comment: Optional icon name
+            type: select
+            options:
+              values: _select_data.icons
 
   price_items:
     values:
@@ -501,7 +595,9 @@ _structures:
           description: ''
         _inputs:
           icon:
-            type: text
+            type: select
+            options:
+              values: _select_data.icons
           title:
             type: html
           description:

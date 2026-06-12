@@ -6,7 +6,7 @@ import type { CallToAction as Props } from '~/types';
 const {
   variant = 'secondary',
   target,
-  text = Astro.slots.render('default'),
+  text = await Astro.slots.render('default'),
   icon = '',
   class: className = '',
   type,
