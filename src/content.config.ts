@@ -5,10 +5,10 @@ import { glob } from 'astro/loaders';
 const metadataDefinition = () =>
   z
     .object({
-      title: z.string().optional(),
+      title: z.string().nullish(),
       ignoreTitleTemplate: z.boolean().optional(),
 
-      canonical: z.string().optional(),
+      canonical: z.string().nullish(),
 
       robots: z
         .object({
@@ -17,7 +17,7 @@ const metadataDefinition = () =>
         })
         .optional(),
 
-      description: z.string().optional(),
+      description: z.string().nullish(),
 
       openGraph: z
         .object({
@@ -45,7 +45,7 @@ const metadataDefinition = () =>
         })
         .optional(),
     })
-    .optional();
+    .nullish();
 
 const postCollection = defineCollection({
   loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/post' }),
