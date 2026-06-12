@@ -53,8 +53,8 @@ content_blocks:
     isReversed: true
     isAfterContent: false
     tagline: ''
-    title: ''
-    content: '<h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>'
+    title: 'Main Features'
+    content: ''
     columns: 2
     image:
       src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
@@ -76,8 +76,8 @@ content_blocks:
     isReversed: false
     isAfterContent: true
     tagline: ''
-    title: ''
-    content: '<h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>'
+    title: 'Benefits'
+    content: ''
     columns: 2
     image:
       src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'

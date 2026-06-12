@@ -56,7 +56,7 @@ content_blocks:
     isAfterContent: false
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Startup success stories: <br /><span class="text-2xl">Launching with AstroWind</span></h3>
+      <h3 class="content-heading">Startup success stories: <br /><span class="content-heading-secondary">Launching with AstroWind</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1620558138198-cfb9b4f3c294?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1671&q=80'
       alt: 'Startup Image'
@@ -75,7 +75,7 @@ content_blocks:
     isAfterContent: true
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">SaaS showcase: <br /><span class="text-2xl">Streamlining user experience</span></h3>
+      <h3 class="content-heading">SaaS showcase: <br /><span class="content-heading-secondary">Streamlining user experience</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1531973486364-5fa64260d75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1658&q=80'
       alt: 'SaaS Businesses Image'
@@ -94,7 +94,7 @@ content_blocks:
     isAfterContent: true
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Creative portfolios: <br /><span class="text-2xl">Highlighting your work</span></h3>
+      <h3 class="content-heading">Creative portfolios: <br /><span class="content-heading-secondary">Highlighting your work</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
       alt: 'Portfolio Image'
@@ -113,7 +113,7 @@ content_blocks:
     isAfterContent: false
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Small business growth: <br /><span class="text-2xl">Converting visitors into customers</span></h3>
+      <h3 class="content-heading">Small business growth: <br /><span class="content-heading-secondary">Converting visitors into customers</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1514621166532-aa7eb1a3a2f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
       alt: 'Small Business Image'

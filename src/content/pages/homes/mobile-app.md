@@ -50,11 +50,11 @@ content_blocks:
   - _type: content
     isReversed: true
     isAfterContent: false
-    title: ''
+    title: 'Main Features'
     subtitle: ''
     tagline: ''
     columns: 2
-    content: '<h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>'
+    content: ''
     image:
       src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80'
       alt: 'Colorful Image'
@@ -74,11 +74,11 @@ content_blocks:
   - _type: content
     isReversed: false
     isAfterContent: true
-    title: ''
+    title: 'Other features'
     subtitle: ''
     tagline: ''
     columns: 2
-    content: '<h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Other features</h3>'
+    content: ''
     image:
       src: 'https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
       alt: 'Vintage Image'

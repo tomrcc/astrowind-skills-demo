@@ -132,3 +132,29 @@
 .emphasis {
   font-weight: 600;
 }
+
+/* Two-line sub-heading inside a content column (e.g. saas "Use cases",
+ * personal portfolio projects). Semantic replacement for the utility-class
+ * soup that previously lived in the rich-text body, so the editor recognises
+ * it as a styled heading. Mirrored in .cloudcannon/styles/editor.css. */
+.content-heading {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 640px) {
+  .content-heading {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+:where(.dark, .dark *) .content-heading {
+  color: #fff;
+}
+/* Smaller second line of a .content-heading (the part after the <br>). */
+.content-heading-secondary {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}

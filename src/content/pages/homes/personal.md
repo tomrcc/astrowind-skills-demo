@@ -20,14 +20,14 @@ content_blocks:
         target: ''
   - _type: content
     id: about
-    title: ''
+    title: 'About me'
     subtitle: ''
     tagline: ''
     isReversed: false
     isAfterContent: false
     columns: 3
     content: >-
-      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2> <p>Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each pixel becomes a brushstroke in the canvas of imagination.</p> <br /> <p>I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate details of typography, or the vibrant hues of nature during my outdoor escapades.</p> <br /> <p>If you're curious to dive deeper into my work, you can follow me:</p>
+      <p>Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each pixel becomes a brushstroke in the canvas of imagination.</p> <br /> <p>I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate details of typography, or the vibrant hues of nature during my outdoor escapades.</p> <br /> <p>If you're curious to dive deeper into my work, you can follow me:</p>
     image:
       src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
       alt: 'Colorful Image'
@@ -132,7 +132,7 @@ content_blocks:
     isAfterContent: false
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span></h3>
+      <h3 class="content-heading">Project 1: <br /><span class="content-heading-secondary">Brand identity for tech innovators</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80'
       alt: 'Tech Design Image'
@@ -157,7 +157,7 @@ content_blocks:
     isAfterContent: true
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project 2: <br /><span class="text-2xl">Event poster for art & music festival</span></h3>
+      <h3 class="content-heading">Project 2: <br /><span class="content-heading-secondary">Event poster for art & music festival</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
       alt: 'Art and Music Poster Image'
@@ -182,7 +182,7 @@ content_blocks:
     isAfterContent: true
     columns: 2
     content: >-
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project 3: <br /><span class="text-2xl">E-commerce website redesign for fashion brand</span></h3>
+      <h3 class="content-heading">Project 3: <br /><span class="content-heading-secondary">E-commerce website redesign for fashion brand</span></h3>
     image:
       src: 'https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
       alt: 'Fashion e-commerce Image'

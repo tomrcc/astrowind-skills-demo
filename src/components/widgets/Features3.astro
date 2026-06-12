@@ -98,7 +98,7 @@ const columnsClass =
                     data-prop="description"
                   />
                 )}
-                {callToAction && (
+                {callToAction?.text?.trim() && callToAction?.href && (
                   <div class:list={[{ 'mt-3': itemTitle || description }]}>
                     <Button variant="link" {...callToAction} />
                   </div>
