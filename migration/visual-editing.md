@@ -236,6 +236,29 @@ require loading the site in CloudCannon's Visual Editor. Recommend a smoke pass 
   on-page region was made `data-type="block"` to stay consistent with the Content widget
   and the block `content` input.
 
+### Round 3 (editor polish)
+
+- **Friendly icon names** — `_select_data.icons` / `social_icons` converted from flat
+  strings to `{name, id}` objects; icon selects now use `value_key: id`, `preview.text`,
+  and `allow_create: true`, so editors see "Download" instead of `tabler:download`.
+- **Empty buttons (round 2)** — the earlier `await` fix wasn't enough for slot-based
+  buttons because the editor re-render doesn't render Astro slots. Converted the two
+  registered-component slot buttons (BlogLatestPosts "View all posts", contact Form
+  submit) to use the `text` prop instead of slot children.
+- **Headings in `content` not stripped** — `content` fields use `*block_richtext`
+  (sidebar) and `_editables.block` (on-page), both with `format: p h2 h3 h4`, so the
+  in-content `<h3>` sub-headings are editable as headings, not flattened. (For the few
+  content blocks whose `title` is empty and the `<h3>` is the de-facto section heading,
+  moving it to the `title` field is an available follow-up — it would re-render via the
+  component Headline with different sizing, so it was left as an offered change.)
+- **Styled spans no longer "uneditable" in the sidebar** — added
+  `.cloudcannon/styles/editor.css` (mirrors the Tailwind utility classes used in styled
+  content spans) and wired it via `options.styles` on the rich-text input anchors. The
+  on-page editor already had the live Tailwind CSS (hence the asymmetry the user saw);
+  the sidebar editor now gets the same styling so spans render/round-trip instead of
+  being flagged as unknown elements. `_editables` entries stay plain (they don't accept
+  `styles`); the anchors carry `styles` and are defined on the first input that uses them.
+
 ## Out of scope / follow-ups
 
 - **Blog visual editing** (post bodies + list/detail) — deferred by scope decision.

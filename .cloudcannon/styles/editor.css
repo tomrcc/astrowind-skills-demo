@@ -1,0 +1,77 @@
+/*
+ * Editor stylesheet for CloudCannon rich-text inputs (wired via `options.styles`
+ * on the inline/block rich-text inputs in cloudcannon.config.yml).
+ *
+ * Why: several content fields (e.g. the hero subtitle) contain styled inline
+ * <span>s using Tailwind utility classes for emphasis and responsive show/hide.
+ * The on-page visual editor renders these with the site's real Tailwind CSS, so
+ * they look correct and stay editable. The sidebar's standalone rich-text editor
+ * has no Tailwind, so it doesn't recognise the classes and flags the spans as
+ * "uneditable elements". Re-declaring those utility classes here lets the sidebar
+ * editor render and keep them just like the on-page editor — preserving the
+ * styling rather than treating the spans as opaque blocks.
+ *
+ * Responsive show/hide utilities are forced visible so editors can always see
+ * and edit every variant's text; the real responsive behaviour still applies on
+ * the live site via Tailwind.
+ */
+
+/* Emphasis / weight */
+.font-bold {
+  font-weight: 700;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-normal {
+  font-weight: 400;
+}
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+/* Size (used by the in-content <h3> sub-headings) */
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.sm\:text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+/* Brand / accent colours */
+.text-accent {
+  color: #2563eb;
+}
+.text-blue-600 {
+  color: #2563eb;
+}
+.sm\:whitespace-nowrap {
+  white-space: nowrap;
+}
+
+/* Responsive show/hide — keep every variant visible & editable in the editor.
+   The live site still hides/shows the correct one via real Tailwind. */
+.hidden,
+.sm\:hidden {
+  display: inline !important;
+}
+.block,
+.sm\:inline,
+.xl\:inline {
+  display: inline;
+}
