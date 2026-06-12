@@ -1551,6 +1551,7 @@ collections_config:
     icon: gavel
     name: Legal
     _enabled_editors:
+      - visual
       - content
       - data
     schemas:
@@ -1577,6 +1578,7 @@ collections_config:
     icon: post_add
     name: Blog
     _enabled_editors:
+      - visual
       - content
       - data
     add_options:
