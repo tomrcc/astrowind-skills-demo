@@ -213,7 +213,28 @@ require loading the site in CloudCannon's Visual Editor. Recommend a smoke pass 
   `type: select` backed by a new `_select_data.icons` list (the curated set of
   tabler/flat-color icons used on the site). Style fields with a fixed value set belong
   in selects. (Navigation `socialLinks` icons live in the data file and could get the
-  same treatment via `file_config` if desired.)
+  same treatment via `file_config`.)
+- **Footer social-link icons → select** — the `socialLinks[].icon` field in
+  `navigation.json` now uses a dedicated `_select_data.social_icons` list (brand icons,
+  distinct from the content `icons` set), wired via an `icon` input in the navigation
+  `file_config`. All five in-use values are in the list.
+
+### Round 2 (found on /about/)
+
+- **"Image editable regions must contain a child 'img'"** — a content image stored as
+  `{ src: '' }` is a truthy object, so `{image && …}` rendered `<editable-image>` while the
+  `<Image>` component (empty src) emitted no `<img>`. Changed the guard in all six image
+  widgets (Hero, Hero2, Content, Steps, Features3, Testimonials) to the meaningful-field
+  form `(typeof image === 'string' ? image : image?.src) &&` so empty images are
+  sidebar-only (no orphaned region) until a src is set.
+- **Modal markdown toolbar ≠ on-page toolbar** — on-page `data-editable="text"` regions
+  use the `text`/`block` editable types (inline by default), but the sidebar `type: html`
+  inputs had no `options`, so they showed the full toolbar. Defined `_editables.text`
+  (`&inline_richtext`) and `_editables.block` (`&block_richtext`), then referenced those
+  anchors as `options` on every `type: html` input (36 inputs: `content` fields →
+  block, the rest → inline). On-page and modal toolbars now match. Heroes' `content`
+  on-page region was made `data-type="block"` to stay consistent with the Content widget
+  and the block `content` input.
 
 ## Out of scope / follow-ups
 

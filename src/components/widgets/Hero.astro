@@ -81,13 +81,13 @@ const {
             )
           }
         </div>
-        {content && <div set:html={content} data-editable="text" data-prop="content" />}
+        {content && <div set:html={content} data-editable="text" data-type="block" data-prop="content" />}
       </div>
       <div
         class="intersect-once intersect-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
       >
         {
-          image && (
+          (typeof image === 'string' ? image : image?.src) && (
             <div class="relative m-auto max-w-5xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />

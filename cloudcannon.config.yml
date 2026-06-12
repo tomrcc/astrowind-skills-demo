@@ -124,6 +124,31 @@ _select_data:
     - flat-color-icons:gallery
     - flat-color-icons:template
     - flat-color-icons:voice-presentation
+  # Brand/social icons for the footer social links — a distinct set from the
+  # content icons above. Includes the icons currently in use plus common tabler
+  # brand icons so editors can add other networks.
+  social_icons:
+    - tabler:brand-x
+    - tabler:brand-twitter
+    - tabler:brand-facebook
+    - tabler:brand-instagram
+    - tabler:brand-github
+    - tabler:brand-linkedin
+    - tabler:brand-youtube
+    - tabler:brand-mastodon
+    - tabler:brand-tiktok
+    - tabler:brand-discord
+    - tabler:brand-dribbble
+    - tabler:brand-behance
+    - tabler:brand-pinterest
+    - tabler:brand-telegram
+    - tabler:brand-whatsapp
+    - tabler:brand-reddit
+    - tabler:brand-twitch
+    - tabler:brand-medium
+    - tabler:rss
+    - tabler:mail
+    - tabler:world
 
 # ---------------------------------------------------------------------------
 # Page-builder block list. Shared by pages / homes / landing collections.
@@ -140,6 +165,26 @@ _inputs:
 # Editor toolbars
 # ---------------------------------------------------------------------------
 _editables:
+  # Inline rich text. Drives on-page `data-editable="text"` regions AND the
+  # sidebar `type: html` inputs that mirror them (via the *inline_richtext
+  # anchor below) so both toolbars expose the same options.
+  text: &inline_richtext
+    bold: true
+    italic: true
+    link: true
+    removeformat: true
+  # Block rich text. Drives on-page `data-editable="text" data-type="block"`
+  # regions and their mirror inputs (the `content` field) via *block_richtext.
+  block: &block_richtext
+    bold: true
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    blockquote: true
+    format: p h2 h3 h4
+    removeformat: true
+  # Markdown body (`@content`) editor for legal/blog bodies — full toolbar.
   content:
     bold: true
     italic: true
@@ -221,8 +266,10 @@ _structures:
         _inputs:
           title:
             type: html
+            options: *inline_richtext
           description:
             type: html
+            options: *inline_richtext
           icon:
             type: select
             options:
@@ -364,6 +411,7 @@ _structures:
             type: text
           testimonial:
             type: html
+            options: *inline_richtext
           name:
             type: text
           job:
@@ -476,10 +524,13 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           content:
             type: html
+            options: *block_richtext
           image:
             type: object
             options:
@@ -560,10 +611,13 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           content:
             type: html
+            options: *block_richtext
           callToAction:
             type: object
             options:
@@ -600,8 +654,10 @@ _structures:
               values: _select_data.icons
           title:
             type: html
+            options: *inline_richtext
           description:
             type: html
+            options: *inline_richtext
 
       - label: Features (list)
         icon: list_alt
@@ -632,8 +688,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           columns:
             type: number
             comment: Grid columns (1-4)
@@ -701,8 +759,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           columns:
             type: number
             comment: Grid columns (1-4)
@@ -771,10 +831,13 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           content:
             type: html
+            options: *block_richtext
           columns:
             type: number
           isReversed:
@@ -838,8 +901,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           isReversed:
             type: switch
           image:
@@ -893,8 +958,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           isReversed:
             type: switch
           callToAction:
@@ -935,8 +1002,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           stats:
             type: array
             options:
@@ -970,8 +1039,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           actions:
             type: array
             options:
@@ -1028,8 +1099,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           prices:
             type: array
             options:
@@ -1069,8 +1142,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           callToAction:
             type: object
             options:
@@ -1110,8 +1185,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           icons:
             type: array
             comment: Optional list of icon names (used instead of logo images)
@@ -1157,8 +1234,10 @@ _structures:
             type: text
           title:
             type: html
+            options: *inline_richtext
           subtitle:
             type: html
+            options: *inline_richtext
           description:
             type: text
           button:
@@ -1203,6 +1282,7 @@ _structures:
             comment: Optional HTML anchor
           title:
             type: html
+            options: *inline_richtext
           information:
             type: text
 
@@ -1432,3 +1512,9 @@ file_config:
             icon: call_to_action
       footNote:
         type: html
+        options: *inline_richtext
+      # Only the footer socialLinks carry an `icon` field in this data file.
+      icon:
+        type: select
+        options:
+          values: _select_data.social_icons

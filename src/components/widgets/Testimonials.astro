@@ -47,7 +47,7 @@ const {
               <hr class="border-slate-200 dark:border-slate-600 my-4" />
 
               <div class="flex items-center">
-                {image && (
+                {(typeof image === 'string' ? image : image?.src) && (
                   <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
                     {typeof image === 'string' ? (
                       <Fragment set:html={image} />

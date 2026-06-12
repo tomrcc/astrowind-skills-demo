@@ -36,7 +36,7 @@ const {
       <Timeline items={items} classes={classes?.items as Record<string, never>} />
     </div>
     {
-      image && (
+      (typeof image === 'string' ? image : image?.src) && (
         <div class="relative md:basis-1/2">
           {typeof image === 'string' ? (
             <Fragment set:html={image} />

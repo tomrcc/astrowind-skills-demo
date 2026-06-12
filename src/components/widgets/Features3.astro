@@ -45,7 +45,7 @@ const columnsClass =
 
   <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
     {
-      image && (
+      (typeof image === 'string' ? image : image?.src) && (
         <div class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg">
           {typeof image === 'string' ? (
             <Fragment set:html={image} />
