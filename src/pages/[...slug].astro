@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import merge from 'lodash.merge';
+
+import PageLayout from '~/layouts/PageLayout.astro';
+import LandingLayout from '~/layouts/LandingLayout.astro';
+import BlockRenderer from '~/components/BlockRenderer.astro';
+import type { MetaData } from '~/types';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages', ({ data }) => !data.draft);
+  const legal = await getCollection('legal');
+
+  return [
+    ...pages.map((entry) => ({
+      params: { slug: entry.id === 'index' ? undefined : entry.id },
+      props: { entry, kind: 'page' as const },
+    })),
+    ...legal.map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry, kind: 'legal' as const },
+    })),
+  ];
+}
+
+const { entry, kind } = Astro.props;
+const data = entry.data as Record<string, any>;
+
+const metadata = merge({ title: data.title }, data.metadata ?? {}) as MetaData;
+
+// Landing pages use the slimmer LandingLayout; everything else PageLayout.
+const layouts: Record<string, typeof PageLayout> = { PageLayout, LandingLayout };
+const layoutName = data.layout || (entry.id.startsWith('landing/') ? 'LandingLayout' : 'PageLayout');
+const LayoutComponent = layouts[layoutName] || PageLayout;
+
+const { Content } = kind === 'legal' ? await render(entry) : { Content: null };
+---
+
+<LayoutComponent metadata={metadata}>
+  {
+    kind === 'legal' ? (
+      <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
+        <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{data.title}</h1>
+        <div class="mx-auto prose prose-lg max-w-4xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8">
+          <Content />
+        </div>
+      </section>
+    ) : (
+      (data.content_blocks ?? []).map((block) => <BlockRenderer block={block} />)
+    )
+  }
+</LayoutComponent>

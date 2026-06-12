@@ -1,0 +1,1337 @@
+version: latest
+
+# ---------------------------------------------------------------------------
+# Asset paths. Site images live in src/assets/images (Astro-optimized) — image
+# inputs below override to upload there with static: "" so import.meta.glob
+# resolves them. public/ holds static files.
+# ---------------------------------------------------------------------------
+paths:
+  static: public
+  uploads: src/assets/images
+
+markdown:
+  engine: commonmark
+  options:
+    gfm: true # enables tables, strikethrough, etc. in blog markdown bodies
+    breaks: false
+
+# ---------------------------------------------------------------------------
+# Shared select data
+# ---------------------------------------------------------------------------
+_select_data:
+  button_variants:
+    - primary
+    - secondary
+    - tertiary
+    - link
+  link_targets:
+    - _self
+    - _blank
+  input_types:
+    - text
+    - email
+    - tel
+    - number
+
+# ---------------------------------------------------------------------------
+# Page-builder block list. Shared by pages / homes / landing collections.
+# ---------------------------------------------------------------------------
+_inputs:
+  content_blocks:
+    type: array
+    label: Page sections
+    options:
+      structures: _structures.content_blocks
+    comment: Add, reorder and remove the sections that make up this page.
+
+# ---------------------------------------------------------------------------
+# Editor toolbars
+# ---------------------------------------------------------------------------
+_editables:
+  content:
+    bold: true
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    blockquote: true
+    format: p h2 h3 h4
+    image: true
+    table: true
+    snippet: true
+    undo: true
+    redo: true
+    removeformat: true
+
+# ===========================================================================
+# Shared sub-structures (referenced by name from block values below)
+# ===========================================================================
+_structures:
+  actions:
+    values:
+      - label: Button
+        icon: ads_click
+        picker_preview:
+          text:
+            - Button
+          icon:
+            - ads_click
+        preview:
+          text:
+            - key: text
+            - Button
+          icon:
+            - ads_click
+        value:
+          text: ''
+          href: '#'
+          variant: secondary
+          icon: ''
+          target: ''
+        _inputs:
+          text:
+            type: text
+          href:
+            type: text
+            comment: Page path, anchor (#id) or full URL
+          variant:
+            type: select
+            options:
+              values: _select_data.button_variants
+          icon:
+            type: text
+            comment: 'Icon name, e.g. tabler:download'
+          target:
+            type: select
+            options:
+              values: _select_data.link_targets
+
+  items:
+    values:
+      - label: Item
+        icon: list
+        picker_preview:
+          text:
+            - Item
+          icon:
+            - list
+        preview:
+          text:
+            - key: title
+            - Item
+          icon:
+            - list
+        value:
+          title: ''
+          description: ''
+          icon: ''
+        _inputs:
+          title:
+            type: html
+          description:
+            type: html
+          icon:
+            type: text
+            comment: 'Icon name, e.g. tabler:rocket (optional)'
+
+  stats:
+    values:
+      - label: Stat
+        icon: leaderboard
+        picker_preview:
+          text:
+            - Stat
+          icon:
+            - leaderboard
+        preview:
+          text:
+            - key: title
+            - key: amount
+            - Stat
+          icon:
+            - leaderboard
+        value:
+          amount: ''
+          title: ''
+          icon: ''
+        _inputs:
+          amount:
+            type: text
+          title:
+            type: text
+          icon:
+            type: text
+            comment: Optional icon name
+
+  price_items:
+    values:
+      - label: Feature line
+        icon: check
+        picker_preview:
+          text:
+            - Feature line
+          icon:
+            - check
+        preview:
+          text:
+            - key: description
+            - Feature line
+          icon:
+            - check
+        value:
+          description: ''
+        _inputs:
+          description:
+            type: text
+
+  prices:
+    values:
+      - label: Plan
+        icon: sell
+        picker_preview:
+          text:
+            - Plan
+          icon:
+            - sell
+        preview:
+          text:
+            - key: title
+            - Plan
+          icon:
+            - sell
+        value:
+          title: ''
+          subtitle: ''
+          price: ''
+          period: ''
+          hasRibbon: false
+          ribbonTitle: ''
+          items: []
+          callToAction:
+            text: ''
+            href: '#'
+            variant: primary
+            icon: ''
+            target: ''
+        _inputs:
+          title:
+            type: text
+          subtitle:
+            type: text
+          price:
+            type: text
+            comment: Amount without the currency symbol, e.g. 29
+          period:
+            type: text
+          hasRibbon:
+            type: switch
+            comment: Show a highlight ribbon (e.g. "popular")
+          ribbonTitle:
+            type: text
+          items:
+            type: array
+            options:
+              structures: _structures.price_items
+          callToAction:
+            type: object
+            options:
+              preview:
+                icon: ads_click
+
+  testimonials:
+    values:
+      - label: Testimonial
+        icon: format_quote
+        picker_preview:
+          text:
+            - Testimonial
+          icon:
+            - format_quote
+        preview:
+          text:
+            - key: name
+            - key: testimonial
+            - Testimonial
+          icon:
+            - format_quote
+          image:
+            - key: image.src
+        value:
+          title: ''
+          testimonial: ''
+          name: ''
+          job: ''
+          image:
+            src: ''
+            alt: ''
+        _inputs:
+          title:
+            type: text
+          testimonial:
+            type: html
+          name:
+            type: text
+          job:
+            type: text
+          image:
+            type: object
+            options:
+              preview:
+                icon: image
+
+  brand_images:
+    values:
+      - label: Brand logo
+        icon: image
+        picker_preview:
+          text:
+            - Brand logo
+          icon:
+            - image
+        preview:
+          text:
+            - key: alt
+            - Brand logo
+          icon:
+            - image
+          image:
+            - key: src
+        value:
+          src: ''
+          alt: ''
+        _inputs:
+          src:
+            type: image
+          alt:
+            type: text
+
+  contact_inputs:
+    values:
+      - label: Form field
+        icon: input
+        picker_preview:
+          text:
+            - Form field
+          icon:
+            - input
+        preview:
+          text:
+            - key: label
+            - key: name
+            - Form field
+          icon:
+            - input
+        value:
+          type: text
+          name: ''
+          label: ''
+          placeholder: ''
+          autocomplete: ''
+        _inputs:
+          type:
+            type: select
+            options:
+              values: _select_data.input_types
+          name:
+            type: text
+          label:
+            type: text
+          placeholder:
+            type: text
+          autocomplete:
+            type: text
+
+  # =========================================================================
+  # Page-builder blocks
+  # =========================================================================
+  content_blocks:
+    style: select
+    values:
+      - label: Hero
+        icon: featured_video
+        picker_preview:
+          text:
+            - Hero
+          icon:
+            - featured_video
+        preview:
+          text:
+            - key: title
+            - Hero
+          icon:
+            - featured_video
+          image:
+            - key: image.src
+        value:
+          _type: hero
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          content: ''
+          image:
+            src: ''
+            alt: ''
+          actions: []
+        _inputs: &hero_inputs
+          id:
+            type: text
+            comment: Optional HTML anchor for in-page links (e.g. hero)
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          content:
+            type: html
+          image:
+            type: object
+            options:
+              preview:
+                icon: image
+          image.src:
+            type: image
+            options:
+              paths:
+                uploads: src/assets/images
+                static: ''
+          actions:
+            type: array
+            options:
+              structures: _structures.actions
+
+      - label: Hero (split)
+        icon: vrpano
+        picker_preview:
+          text:
+            - Hero (split)
+          icon:
+            - vrpano
+        preview:
+          text:
+            - key: title
+            - Hero (split)
+          icon:
+            - vrpano
+          image:
+            - key: image.src
+        value:
+          _type: hero2
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          content: ''
+          image:
+            src: ''
+            alt: ''
+          actions: []
+        _inputs: *hero_inputs
+
+      - label: Hero (text only)
+        icon: title
+        picker_preview:
+          text:
+            - Hero (text only)
+          icon:
+            - title
+        preview:
+          text:
+            - key: title
+            - Hero (text only)
+          icon:
+            - title
+        value:
+          _type: hero_text
+          tagline: ''
+          title: ''
+          subtitle: ''
+          content: ''
+          callToAction:
+            text: ''
+            href: '#'
+            variant: primary
+            icon: ''
+            target: ''
+          callToAction2:
+            text: ''
+            href: '#'
+            variant: secondary
+            icon: ''
+            target: ''
+        _inputs:
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          content:
+            type: html
+          callToAction:
+            type: object
+            options:
+              preview:
+                icon: ads_click
+          callToAction2:
+            type: object
+            options:
+              preview:
+                icon: ads_click
+
+      - label: Note
+        icon: sticky_note_2
+        picker_preview:
+          text:
+            - Note
+          icon:
+            - sticky_note_2
+        preview:
+          text:
+            - key: title
+            - Note
+          icon:
+            - sticky_note_2
+        value:
+          _type: note
+          icon: 'tabler:info-square'
+          title: ''
+          description: ''
+        _inputs:
+          icon:
+            type: text
+          title:
+            type: html
+          description:
+            type: html
+
+      - label: Features (list)
+        icon: list_alt
+        picker_preview:
+          text:
+            - Features (list)
+          icon:
+            - list_alt
+        preview:
+          text:
+            - key: title
+            - Features (list)
+          icon:
+            - list_alt
+        value:
+          _type: features
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          columns: 2
+          items: []
+        _inputs: &features_inputs
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          columns:
+            type: number
+            comment: Grid columns (1-4)
+          items:
+            type: array
+            options:
+              structures: _structures.items
+
+      - label: Features (cards)
+        icon: grid_view
+        picker_preview:
+          text:
+            - Features (cards)
+          icon:
+            - grid_view
+        preview:
+          text:
+            - key: title
+            - Features (cards)
+          icon:
+            - grid_view
+        value:
+          _type: features2
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          columns: 3
+          items: []
+        _inputs: *features_inputs
+
+      - label: Features (with image)
+        icon: dashboard
+        picker_preview:
+          text:
+            - Features (with image)
+          icon:
+            - dashboard
+        preview:
+          text:
+            - key: title
+            - Features (with image)
+          icon:
+            - dashboard
+          image:
+            - key: image.src
+        value:
+          _type: features3
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          columns: 3
+          isBeforeContent: false
+          isAfterContent: false
+          image:
+            src: ''
+            alt: ''
+          items: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          columns:
+            type: number
+            comment: Grid columns (1-4)
+          isBeforeContent:
+            type: switch
+            comment: Tighten spacing below (pairs with a following section)
+          isAfterContent:
+            type: switch
+            comment: Tighten spacing above (pairs with a preceding section)
+          image:
+            type: object
+            options:
+              preview:
+                icon: image
+          image.src:
+            type: image
+            options:
+              paths:
+                uploads: src/assets/images
+                static: ''
+          items:
+            type: array
+            options:
+              structures: _structures.items
+
+      - label: Content
+        icon: article
+        picker_preview:
+          text:
+            - Content
+          icon:
+            - article
+        preview:
+          text:
+            - key: title
+            - Content
+          icon:
+            - article
+          image:
+            - key: image.src
+        value:
+          _type: content
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          content: ''
+          columns: 2
+          isReversed: false
+          isAfterContent: false
+          image:
+            src: ''
+            alt: ''
+          callToAction:
+            text: ''
+            href: '#'
+            variant: secondary
+            icon: ''
+            target: ''
+          items: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          content:
+            type: html
+          columns:
+            type: number
+          isReversed:
+            type: switch
+            comment: Place the image on the opposite side
+          isAfterContent:
+            type: switch
+            comment: Tighten spacing above (pairs with a preceding section)
+          image:
+            type: object
+            options:
+              preview:
+                icon: image
+          image.src:
+            type: image
+            options:
+              paths:
+                uploads: src/assets/images
+                static: ''
+          callToAction:
+            type: object
+            options:
+              preview:
+                icon: ads_click
+          items:
+            type: array
+            options:
+              structures: _structures.items
+
+      - label: Steps (timeline)
+        icon: timeline
+        picker_preview:
+          text:
+            - Steps (timeline)
+          icon:
+            - timeline
+        preview:
+          text:
+            - key: title
+            - Steps (timeline)
+          icon:
+            - timeline
+          image:
+            - key: image.src
+        value:
+          _type: steps
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          isReversed: false
+          image:
+            src: ''
+            alt: ''
+          items: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          isReversed:
+            type: switch
+          image:
+            type: object
+            options:
+              preview:
+                icon: image
+          image.src:
+            type: image
+            options:
+              paths:
+                uploads: src/assets/images
+                static: ''
+          items:
+            type: array
+            options:
+              structures: _structures.items
+
+      - label: Steps (with CTA)
+        icon: format_list_numbered
+        picker_preview:
+          text:
+            - Steps (with CTA)
+          icon:
+            - format_list_numbered
+        preview:
+          text:
+            - key: title
+            - Steps (with CTA)
+          icon:
+            - format_list_numbered
+        value:
+          _type: steps2
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          isReversed: false
+          callToAction:
+            text: ''
+            href: '#'
+            variant: secondary
+            icon: ''
+            target: ''
+          items: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          isReversed:
+            type: switch
+          callToAction:
+            type: object
+            options:
+              preview:
+                icon: ads_click
+          items:
+            type: array
+            options:
+              structures: _structures.items
+
+      - label: Stats
+        icon: leaderboard
+        picker_preview:
+          text:
+            - Stats
+          icon:
+            - leaderboard
+        preview:
+          text:
+            - key: title
+            - Stats
+          icon:
+            - leaderboard
+        value:
+          _type: stats
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          stats: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          stats:
+            type: array
+            options:
+              structures: _structures.stats
+
+      - label: Call to action
+        icon: campaign
+        picker_preview:
+          text:
+            - Call to action
+          icon:
+            - campaign
+        preview:
+          text:
+            - key: title
+            - Call to action
+          icon:
+            - campaign
+        value:
+          _type: call_to_action
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          actions: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          actions:
+            type: array
+            options:
+              structures: _structures.actions
+
+      - label: FAQs
+        icon: quiz
+        picker_preview:
+          text:
+            - FAQs
+          icon:
+            - quiz
+        preview:
+          text:
+            - key: title
+            - FAQs
+          icon:
+            - quiz
+        value:
+          _type: faqs
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          columns: 2
+          items: []
+        _inputs: *features_inputs
+
+      - label: Pricing
+        icon: sell
+        picker_preview:
+          text:
+            - Pricing
+          icon:
+            - sell
+        preview:
+          text:
+            - key: title
+            - Pricing
+          icon:
+            - sell
+        value:
+          _type: pricing
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          prices: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          prices:
+            type: array
+            options:
+              structures: _structures.prices
+
+      - label: Testimonials
+        icon: format_quote
+        picker_preview:
+          text:
+            - Testimonials
+          icon:
+            - format_quote
+        preview:
+          text:
+            - key: title
+            - Testimonials
+          icon:
+            - format_quote
+        value:
+          _type: testimonials
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          callToAction:
+            text: ''
+            href: '#'
+            variant: secondary
+            icon: ''
+            target: ''
+          testimonials: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          callToAction:
+            type: object
+            options:
+              preview:
+                icon: ads_click
+          testimonials:
+            type: array
+            options:
+              structures: _structures.testimonials
+
+      - label: Brands
+        icon: handshake
+        picker_preview:
+          text:
+            - Brands
+          icon:
+            - handshake
+        preview:
+          text:
+            - key: title
+            - Brands
+          icon:
+            - handshake
+        value:
+          _type: brands
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          icons: []
+          images: []
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          icons:
+            type: array
+            comment: Optional list of icon names (used instead of logo images)
+          images:
+            type: array
+            options:
+              structures: _structures.brand_images
+
+      - label: Contact form
+        icon: contact_mail
+        picker_preview:
+          text:
+            - Contact form
+          icon:
+            - contact_mail
+        preview:
+          text:
+            - key: title
+            - Contact form
+          icon:
+            - contact_mail
+        value:
+          _type: contact
+          id: ''
+          tagline: ''
+          title: ''
+          subtitle: ''
+          description: ''
+          button: ''
+          inputs: []
+          textarea:
+            label: ''
+            name: ''
+            placeholder: ''
+            rows: 4
+          disclaimer:
+            label: ''
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          tagline:
+            type: text
+          title:
+            type: html
+          subtitle:
+            type: html
+          description:
+            type: text
+          button:
+            type: text
+            comment: Submit button label
+          inputs:
+            type: array
+            options:
+              structures: _structures.contact_inputs
+          textarea:
+            type: object
+            options:
+              preview:
+                icon: notes
+          disclaimer:
+            type: object
+            options:
+              preview:
+                icon: gpp_maybe
+
+      - label: Latest blog posts
+        icon: rss_feed
+        picker_preview:
+          text:
+            - Latest blog posts
+          icon:
+            - rss_feed
+        preview:
+          text:
+            - key: title
+            - Latest blog posts
+          icon:
+            - rss_feed
+        value:
+          _type: blog_latest_posts
+          id: ''
+          title: ''
+          information: ''
+        _inputs:
+          id:
+            type: text
+            comment: Optional HTML anchor
+          title:
+            type: html
+          information:
+            type: text
+
+# ===========================================================================
+# Snippets — MDX components editors can insert into blog post bodies
+# ===========================================================================
+_snippets:
+  logo:
+    template: mdx_component
+    inline: false
+    preview:
+      text: Logo
+      icon: bolt
+    definitions:
+      component_name: Logo
+  youtube:
+    template: mdx_component
+    inline: false
+    preview:
+      text: YouTube video
+      icon: smart_display
+    definitions:
+      component_name: YouTube
+    _inputs:
+      id:
+        type: text
+        comment: YouTube video ID
+  tweet:
+    template: mdx_component
+    inline: false
+    preview:
+      text: Tweet
+      icon: chat
+    definitions:
+      component_name: Tweet
+    _inputs:
+      id:
+        type: text
+        comment: Full tweet URL
+  vimeo:
+    template: mdx_component
+    inline: false
+    preview:
+      text: Vimeo video
+      icon: smart_display
+    definitions:
+      component_name: Vimeo
+    _inputs:
+      id:
+        type: text
+        comment: Vimeo video ID
+
+# ===========================================================================
+# Collections
+# ===========================================================================
+collections_config:
+  pages:
+    path: src/content/pages
+    glob:
+      - '*.md'
+      - '!homes/**'
+      - '!landing/**'
+    url: '/[slug]/'
+    icon: wysiwyg
+    name: Pages
+    _enabled_editors:
+      - visual
+      - data
+    schemas:
+      page_builder:
+        path: .cloudcannon/schemas/page-builder.md
+        name: Page
+        new_preview_url: /services/
+    add_options:
+      - name: New page
+        schema: page_builder
+        icon: note_add
+
+  homes:
+    path: src/content/pages/homes
+    url: '/homes/[slug]/'
+    icon: home
+    name: Homepages
+    _enabled_editors:
+      - visual
+      - data
+    schemas:
+      page_builder:
+        path: .cloudcannon/schemas/page-builder.md
+        name: Homepage
+        new_preview_url: /homes/saas/
+    add_options:
+      - name: New homepage
+        schema: page_builder
+        icon: note_add
+
+  landing:
+    path: src/content/pages/landing
+    url: '/landing/[slug]/'
+    icon: dashboard
+    name: Landing pages
+    _enabled_editors:
+      - visual
+      - data
+    schemas:
+      page_builder:
+        path: .cloudcannon/schemas/page-builder.md
+        name: Landing page
+        new_preview_url: /landing/sales/
+    add_options:
+      - name: New landing page
+        schema: page_builder
+        icon: note_add
+
+  legal:
+    path: src/content/legal
+    url: '/[slug]/'
+    icon: gavel
+    name: Legal
+    _enabled_editors:
+      - content
+      - data
+    schemas:
+      default:
+        path: .cloudcannon/schemas/legal.md
+        name: Legal page
+    add_options:
+      - name: New legal page
+        schema: default
+        editor: content
+        icon: note_add
+    _inputs:
+      title:
+        type: text
+      metadata:
+        type: object
+        options:
+          preview:
+            icon: search
+
+  post:
+    path: src/data/post
+    url: '/[slug]/'
+    icon: post_add
+    name: Blog
+    _enabled_editors:
+      - content
+      - data
+    add_options:
+      - name: New post
+        editor: content
+        icon: post_add
+    _inputs:
+      title:
+        type: text
+      excerpt:
+        type: textarea
+      publishDate:
+        type: datetime
+      updateDate:
+        type: datetime
+      draft:
+        type: switch
+      image:
+        type: image
+      category:
+        type: text
+      tags:
+        type: array
+      author:
+        type: text
+      metadata:
+        type: object
+        options:
+          preview:
+            icon: search
+
+  data:
+    path: src/data
+    glob:
+      - '**/*.json'
+    disable_url: true
+    icon: settings
+    name: Site data
+    _enabled_editors:
+      - data
+
+# ===========================================================================
+# Data config — exposes data files for use elsewhere (e.g. select inputs)
+# ===========================================================================
+data_config:
+  navigation:
+    path: src/data/navigation.json
+
+# ===========================================================================
+# Sidebar grouping
+# ===========================================================================
+collection_groups:
+  - heading: Pages
+    collections:
+      - pages
+      - homes
+      - landing
+      - legal
+  - heading: Blog
+    collections:
+      - post
+  - heading: Settings
+    collections:
+      - data
+
+# ===========================================================================
+# Per-file input config for data files (navigation editing)
+# ===========================================================================
+file_config:
+  - glob: src/data/navigation.json
+    _inputs:
+      header:
+        type: object
+        options:
+          preview:
+            icon: menu
+      footer:
+        type: object
+        options:
+          preview:
+            icon: call_to_action
+      footNote:
+        type: html

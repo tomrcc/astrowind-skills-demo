@@ -7,6 +7,7 @@ import { unified } from '@astrojs/markdown-remark';
 
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import AutoImport from 'astro-auto-import';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
@@ -28,6 +29,11 @@ export default defineConfig({
 
   integrations: [
     sitemap(),
+    // Inject MDX shortcode imports at build time so editors never see raw
+    // `import` statements in CloudCannon's content editor. Must run before mdx().
+    AutoImport({
+      imports: ['~/components/Logo.astro', { 'astro-embed': ['YouTube', 'Tweet', 'Vimeo'] }],
+    }),
     mdx(),
     icon({
       include: {

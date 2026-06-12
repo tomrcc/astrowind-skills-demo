@@ -8,7 +8,7 @@ const metadataDefinition = () =>
       title: z.string().optional(),
       ignoreTitleTemplate: z.boolean().optional(),
 
-      canonical: z.url().optional(),
+      canonical: z.string().optional(),
 
       robots: z
         .object({
@@ -66,6 +66,38 @@ const postCollection = defineCollection({
   }),
 });
 
+// A page-builder page is a list of blocks. Each block carries a `_type`
+// discriminator that BlockRenderer maps to a widget component. The block's
+// own fields are validated by CloudCannon's structures (cloudcannon.config.yml),
+// so the Zod schema here stays permissive — this avoids YAML empty-field (`null`)
+// rejections from per-field `.optional()` rules during editing.
+const contentBlock = z.object({ _type: z.string() }).passthrough();
+
+const pagesCollection = defineCollection({
+  loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: 'src/content/pages' }),
+  schema: z.object({
+    _schema: z.string().optional(),
+    title: z.string().optional(),
+    draft: z.boolean().optional(),
+    // Which top-level layout to render. Defaults by convention in the
+    // catch-all route (landing/* → LandingLayout, otherwise PageLayout).
+    layout: z.enum(['PageLayout', 'LandingLayout']).optional(),
+    metadata: metadataDefinition(),
+    content_blocks: z.array(contentBlock).optional(),
+  }),
+});
+
+const legalCollection = defineCollection({
+  loader: glob({ pattern: '*.md', base: 'src/content/legal' }),
+  schema: z.object({
+    _schema: z.string().optional(),
+    title: z.string(),
+    metadata: metadataDefinition(),
+  }),
+});
+
 export const collections = {
   post: postCollection,
+  pages: pagesCollection,
+  legal: legalCollection,
 };
