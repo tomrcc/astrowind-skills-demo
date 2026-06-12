@@ -20,12 +20,16 @@ const { metadata } = Astro.props;
     <Announcement />
   </slot>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <editable-component data-component="header" data-prop="@data[navigation].header">
+      <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    </editable-component>
   </slot>
   <main>
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <editable-component data-component="footer" data-prop="@data[navigation].footer">
+      <Footer {...footerData} />
+    </editable-component>
   </slot>
 </Layout>

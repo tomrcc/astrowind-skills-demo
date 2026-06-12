@@ -33,6 +33,8 @@ const {
             <p
               class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={tagline}
+              data-editable="text"
+              data-prop="tagline"
             />
           )
         }
@@ -41,6 +43,8 @@ const {
             <h1
               class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={title}
+              data-editable="text"
+              data-prop="title"
             />
           )
         }
@@ -50,26 +54,34 @@ const {
               <p
                 class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
                 set:html={subtitle}
+                data-editable="text"
+                data-prop="subtitle"
               />
             )
           }
           {
-            actions && (
-              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-                {Array.isArray(actions) ? (
-                  actions.map((action) => (
-                    <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
-                    </div>
-                  ))
-                ) : (
-                  <Fragment set:html={actions} />
-                )}
+            Array.isArray(actions) ? (
+              <div
+                class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+                data-editable="array"
+                data-prop="actions"
+              >
+                {actions.map((action) => (
+                  <div class="flex w-full sm:w-auto" data-editable="array-item">
+                    <Button {...(action || {})} class="w-full sm:mb-0" />
+                  </div>
+                ))}
               </div>
+            ) : (
+              actions && (
+                <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+                  <Fragment set:html={actions} />
+                </div>
+              )
             )
           }
         </div>
-        {content && <Fragment set:html={content} />}
+        {content && <div set:html={content} data-editable="text" data-prop="content" />}
       </div>
       <div
         class="intersect-once intersect-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
@@ -80,17 +92,19 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-                <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  fetchpriority="high"
-                  width={1024}
-                  height={576}
-                  format="webp"
-                  {...image}
-                />
+                <editable-image data-prop="image">
+                  <Image
+                    class="mx-auto rounded-md w-full"
+                    widths={[400, 768, 1024, 2040]}
+                    sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                    loading="eager"
+                    fetchpriority="high"
+                    width={1024}
+                    height={576}
+                    format="webp"
+                    {...image}
+                  />
+                </editable-image>
               )}
             </div>
           )

@@ -80,7 +80,9 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     description && (
       <div class="mt-3 text-center">
-        <p class="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+        <p class="text-sm text-gray-600 dark:text-gray-400" data-editable="text" data-prop="description">
+          {description}
+        </p>
       </div>
     )
   }

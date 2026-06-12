@@ -46,7 +46,13 @@ const { Content } = kind === 'legal' ? await render(entry) : { Content: null };
         </div>
       </section>
     ) : (
-      (data.content_blocks ?? []).map((block) => <BlockRenderer block={block} />)
+      <div data-editable="array" data-prop="content_blocks" data-component-key="_type">
+        {(data.content_blocks ?? []).map((block) => (
+          <div data-editable="array-item" data-component={block._type}>
+            <BlockRenderer block={block} />
+          </div>
+        ))}
+      </div>
     )
   }
 </LayoutComponent>

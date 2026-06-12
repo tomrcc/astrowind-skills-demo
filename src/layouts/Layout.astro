@@ -46,5 +46,44 @@ const { language, textDirection } = I18N;
     <slot />
 
     <BasicScripts />
+
+    <script>
+      // Load CloudCannon component registration only inside the Visual Editor
+      // iframe (window.inEditorMode is set by CloudCannon). The dynamic import
+      // keeps this code out of the production bundle entirely.
+      if (window.inEditorMode) {
+        // Flag the document so the scroll-reveal override below applies. The
+        // AstroWind "intersect" system hides content with opacity:0 until an
+        // IntersectionObserver fires on scroll — which doesn't reliably happen
+        // inside the editor iframe, leaving sections blank in the Visual Editor.
+        document.documentElement.classList.add('cc-visual-editor');
+
+        import('../cloudcannon/registerComponents').catch((error) => {
+          console.warn('Failed to load CloudCannon component registration:', error);
+        });
+      }
+    </script>
+
+    <style is:global>
+      /* Editable-region wrapper elements must not affect layout. The package
+         only styles/upgrades them inside the editor, so in the production build
+         they would default to display:inline and collapse `w-full` images or
+         wrap block-level Header/Footer in an inline box. display:contents makes
+         their box disappear in both contexts; the editor still targets the
+         descendant <img>/text/component. */
+      editable-component,
+      editable-image,
+      editable-text {
+        display: contents;
+      }
+
+      /* Force intersect scroll-reveal content visible inside CloudCannon's
+         Visual Editor (the observer that adds `.intersect` may never fire). */
+      html.cc-visual-editor [class*='intersect-'] {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+      }
+    </style>
   </body>
 </html>

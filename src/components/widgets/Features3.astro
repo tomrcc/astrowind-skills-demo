@@ -50,15 +50,17 @@ const columnsClass =
           {typeof image === 'string' ? (
             <Fragment set:html={image} />
           ) : (
-            <Image
-              class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
-              width={768}
-              height={320}
-              widths={[400, 768]}
-              layout="fullWidth"
-              format="webp"
-              {...image}
-            />
+            <editable-image data-prop="image">
+              <Image
+                class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
+                width={768}
+                height={320}
+                widths={[400, 768]}
+                layout="fullWidth"
+                format="webp"
+                {...image}
+              />
+            </editable-image>
           )}
         </div>
       )
@@ -67,9 +69,12 @@ const columnsClass =
 
   {
     items.length > 0 && (
-      <div class:list={['grid mx-auto gap-8 md:gap-y-12 mt-12', columnsClass]}>
+      <div class:list={['grid mx-auto gap-8 md:gap-y-12 mt-12', columnsClass]} data-editable="array" data-prop="items">
         {items.map(({ title: itemTitle, description, icon, callToAction }) => (
-          <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <div
+            class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+            data-editable="array-item"
+          >
             <div class="flex flex-row max-w-full sm:max-w-md">
               {(icon || defaultIcon) && (
                 <div class="flex justify-center">
@@ -80,8 +85,19 @@ const columnsClass =
                 </div>
               )}
               <div class="mt-0.5">
-                {itemTitle && <h3 class="text-lg font-semibold">{itemTitle}</h3>}
-                {description && <p class:list={[{ 'mt-0.5': itemTitle }, 'text-muted']} set:html={description} />}
+                {itemTitle && (
+                  <h3 class="text-lg font-semibold" data-editable="text" data-prop="title">
+                    {itemTitle}
+                  </h3>
+                )}
+                {description && (
+                  <p
+                    class:list={[{ 'mt-0.5': itemTitle }, 'text-muted']}
+                    set:html={description}
+                    data-editable="text"
+                    data-prop="description"
+                  />
+                )}
                 {callToAction && (
                   <div class:list={[{ 'mt-3': itemTitle || description }]}>
                     <Button variant="link" {...callToAction} />

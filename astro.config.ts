@@ -17,6 +17,7 @@ import type { AstroIntegration } from 'astro';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
+import editableRegions from "@cloudcannon/editable-regions/astro-integration";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -28,6 +29,7 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
+    editableRegions(),
     sitemap(),
     // Inject MDX shortcode imports at build time so editors never see raw
     // `import` statements in CloudCannon's content editor. Must run before mdx().
