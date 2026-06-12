@@ -1,13 +1,14 @@
 version: latest
 
 # ---------------------------------------------------------------------------
-# Asset paths. Site images live in src/assets/images (Astro-optimized) — image
-# inputs below override to upload there with static: "" so import.meta.glob
-# resolves them. public/ holds static files.
+# Asset paths. Global uploads target the static dir (public/) — CloudCannon
+# requires paths.uploads to begin with paths.static. Optimized site images live
+# in src/assets/images; the image inputs below override per-input to upload
+# there with static: "" so import.meta.glob resolves them.
 # ---------------------------------------------------------------------------
 paths:
   static: public
-  uploads: src/assets/images
+  uploads: public/images
 
 markdown:
   engine: commonmark
