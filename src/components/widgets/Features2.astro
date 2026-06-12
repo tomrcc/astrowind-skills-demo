@@ -42,9 +42,7 @@ const columnsClass =
           >
             {(icon || defaultIcon) && <Icon name={icon || defaultIcon} class="mb-6 w-12 h-12 text-primary" />}
             {itemTitle && (
-              <div class="text-xl font-bold" data-editable="text" data-prop="title">
-                {itemTitle}
-              </div>
+              <div class="text-xl font-bold" data-editable="text" data-prop="title" set:html={itemTitle} />
             )}
             {description && <p class="text-muted mt-2" set:html={description} data-editable="text" data-prop="description" />}
             {callToAction?.text?.trim() && callToAction?.href && (

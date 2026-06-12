@@ -22,19 +22,29 @@ const loadLocalImages = () => {
  * Accepts:
  *   - `null` / `undefined`         → returned as-is
  *   - `ImageMetadata`              → returned as-is (already imported)
- *   - `"http(s)://…"` or `"/path"` → returned as-is (external or public/)
- *   - `"~/assets/images/…"`        → resolved to its ImageMetadata via the glob
+ *   - `"http(s)://…"`              → returned as-is (external)
+ *   - `"~/assets/images/…"`, `"/src/assets/images/…"`, `"src/assets/images/…"`
+ *                                  → resolved to its ImageMetadata via the glob
+ *   - any other `"/path"`          → returned as-is (public/ asset)
+ *
+ * CloudCannon's image input stores local picks as `/src/assets/images/…`, while
+ * templates author them as `~/assets/images/…`; both map to the same glob key.
  */
 export const findImage = async (
   imagePath?: string | ImageMetadata | null
 ): Promise<string | ImageMetadata | undefined | null> => {
   if (typeof imagePath !== 'string') return imagePath;
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/'))
-    return imagePath;
-  if (!imagePath.startsWith('~/assets/images')) return imagePath;
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+
+  // Normalise a local optimized-image reference to its import.meta.glob key.
+  let key: string | undefined;
+  if (imagePath.startsWith('~/assets/images')) key = imagePath.replace('~/', '/src/');
+  else if (imagePath.startsWith('/src/assets/images')) key = imagePath;
+  else if (imagePath.startsWith('src/assets/images')) key = '/' + imagePath;
+
+  if (!key) return imagePath; // remote already handled; other `/…` = public/ asset
 
   const images = loadLocalImages();
-  const key = imagePath.replace('~/', '/src/');
   const loader = images[key];
 
   if (typeof loader !== 'function') return null;

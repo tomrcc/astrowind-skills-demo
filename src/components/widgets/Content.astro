@@ -96,9 +96,8 @@ const columnsClass =
                           class="text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2"
                           data-editable="text"
                           data-prop="title"
-                        >
-                          {itemTitle}
-                        </h3>
+                          set:html={itemTitle}
+                        />
                       )}
                       {description && (
                         <p

@@ -86,9 +86,7 @@ const columnsClass =
               )}
               <div class="mt-0.5">
                 {itemTitle && (
-                  <h3 class="text-lg font-semibold" data-editable="text" data-prop="title">
-                    {itemTitle}
-                  </h3>
+                  <h3 class="text-lg font-semibold" data-editable="text" data-prop="title" set:html={itemTitle} />
                 )}
                 {description && (
                   <p
