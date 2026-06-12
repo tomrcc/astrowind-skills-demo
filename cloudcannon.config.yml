@@ -1601,7 +1601,10 @@ collections_config:
       category:
         type: text
       tags:
-        type: array
+        type: multiselect
+        options:
+          values: data.tags
+        comment: Pick from the managed tag list (edit it in Site data → tags.json)
       author:
         type: text
       metadata:
@@ -1626,6 +1629,11 @@ collections_config:
 data_config:
   navigation:
     path: src/data/navigation.json
+  # Editable list of blog tags (src/data/tags.json — a plain string array,
+  # editable via the Site data collection). Powers the `tags` multiselect on
+  # blog posts so editors pick from a managed list instead of free-typing.
+  tags:
+    path: src/data/tags.json
 
 # ===========================================================================
 # Sidebar grouping
